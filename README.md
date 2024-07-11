@@ -1,6 +1,3 @@
-Sure, here's a well-arranged README for "Format Buddy":
-
----
 
 # Format Buddy
 
