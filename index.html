@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="37.ico" type="image/x-icon">
+    <title>Format Buddy By Avishek
+    </title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F2F5F7;
+        }
+
+        .container {
+            margin: 0;
+            width: 400px;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: "Poppins", sans-serif;
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 50px #e4eaee;
+            padding: 40px;
+        }
+
+        input,
+        button {
+            font-family: "Poppins", sans-serif;
+            padding: 18px 15px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #069582;
+            border-radius: 18px;
+        }
+
+        button {
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+            padding: 25px 5px;
+            background-color: #069582;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 18px;
+            margin: 0;
+        }
+
+        button:hover {
+            background-color: #1fa896;
+        }
+
+        h1 {
+            font-weight: 500;
+            margin: 0;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 14px;
+            margin: 0;
+            color: #939f9e;
+            padding: 25px;
+
+            & a {
+                color: #1fa896;
+
+            }
+        }
+
+        p {
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+            color: #939f9e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Format Buddy</h1>
+        <p>Just enter your initials and click "Generate & Copy" to effortlessly copy the file naming format with the
+            correct date. It's
+            hassle-free!
+        </p>
+        <input type="text" id="initials" placeholder="Enter your initials" required>
+        <button onclick="generateText()">Generate & Copy</button>
+        <p id="output"></p>
+    </div>
+    <div class="footer">
+        <h4>By <a target=”_blank” href="https://avishek-dey.github.io/portfolio-2024/">Avishek Dey</a></h4>
+    </div>
+
+    <script>
+        function generateText() {
+            const initials = document.getElementById('initials').value.trim().toUpperCase();
+            if (!initials) {
+                alert('Please enter your initials.');
+                return;
+            }
+
+            const date = new Date();
+            const day = String(date.getDate()).padStart(2, '0');
+            const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            const month = monthNames[date.getMonth()];
+            const year = date.getFullYear();
+            const version = 'V1';
+
+            const dynamicText = `_${initials}_${day}-${month}-${year}_${version}`;
+            document.getElementById('output').innerText = dynamicText;
+
+            copyToClipboard(dynamicText);
+            alert('Text copied to clipboard: ' + dynamicText);
+        }
+
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+
+</html>
