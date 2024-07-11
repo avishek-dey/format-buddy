@@ -60,6 +60,3 @@ If the user's initials are `AD` and today's date is July 11, 2024, the generated
 
 We welcome contributions to Format Buddy! If you have ideas for new features or improvements, please feel free to submit a pull request or open an issue.
 
----
-
-With this README, users can understand the purpose and usage of Format Buddy, along with its benefits in improving workflow efficiency and accuracy.
