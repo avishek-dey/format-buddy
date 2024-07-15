@@ -9,11 +9,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="shortcut icon" href="37.ico" type="image/x-icon">
     <title>Format Buddy By Avishek
     </title>
     <style>
         body {
+            height: 100vh;
             font-family: "Poppins", sans-serif;
             display: flex;
             flex-direction: column;
@@ -22,21 +24,53 @@
             height: 100vh;
             margin: 0;
             background-color: #F2F5F7;
+            gap: 20px;
         }
 
         .container {
-            margin: 0;
-            width: 400px;
-            height: fit-content;
+            width: 50%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: start;
             font-family: "Poppins", sans-serif;
             background: #fff;
             border-radius: 30px;
             box-shadow: 0 0 50px #e4eaee;
-            padding: 40px;
+            padding: 35px;
+            gap: 12px;
+        }
+
+        .container-3 {
+            width: 10%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            font-family: "Poppins", sans-serif;
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 50px #e4eaee;
+            padding: 35px;
+            gap: 12px;
+        }
+
+        .container-2 {
+            height: 60%;
+            width: 1100px;
+            padding: 50px 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            font-family: "Poppins", sans-serif;
+            background: #fff;
+            border-radius: 45px;
+            box-shadow: 0 0 50px #e4eaee;
+            gap: 20px;
         }
 
         input,
@@ -51,19 +85,72 @@
         }
 
         button {
+            transition: 0.3s;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
             font-family: "Poppins", sans-serif;
             font-size: 18px;
-            padding: 25px 5px;
+            padding: 25px 35px;
             background-color: #069582;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 18px;
             margin: 0;
+            gap: 14px;
         }
 
         button:hover {
-            background-color: #1fa896;
+            scale: 101%;
+            transition: 0.2s;
+            background-color: #3e9d91;
+        }
+
+        button:active {
+            scale: 98%;
+            transition: 0.2s;
+            background-color: #23675e;
+        }
+
+        button:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .container-3 .icon {
+            overflow: hidden;
+            width: 65px;
+            height: 65px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+            background-color: #069582;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 18px;
+            margin: 0;
+            gap: 14px;
+
+            &:hover {
+                scale: 106%;
+                transition: 0.3s;
+                background-color: #1fa896;
+            }
+
+            &:active {
+                scale: 98%;
+                transition: 0.2s;
+                background-color: #23675e;
+            }
+
         }
 
         h1 {
@@ -85,25 +172,139 @@
         }
 
         p {
-            width: 100%;
+            width: 80%;
             font-size: 14px;
             text-align: center;
             color: #939f9e;
+        }
+
+        .toast {
+            visibility: hidden;
+            min-width: 200px;
+            margin: 0 auto;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            border-radius: 18px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 17px;
+        }
+
+        .toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Format Buddy</h1>
-        <p>Just enter your initials and click "Generate & Copy" to effortlessly copy the file naming format with the
-            correct date. It's
-            hassle-free!
-        </p>
-        <input type="text" id="initials" placeholder="Enter your initials" required>
-        <button onclick="generateText()">Generate & Copy</button>
-        <p id="output"></p>
+    <div class="container-2">
+        <div class="container">
+            <h1>Format Buddy</h1>
+            <p>Just enter your initials and click "Generate & Copy" to effortlessly copy the file naming format with the
+                correct date. It's
+                hassle-free!
+            </p>
+            <input type="text" id="initials" placeholder="Enter your initials" required>
+            <button onclick="generateText()">Generate & Copy <i class="ri-file-copy-line"></i></button>
+            <p id="output"></p>
+        </div>
+        <div class="container">
+            <button onclick="copyPredefinedText('FIGMA LIVE LINK:')">Figma live link <i
+                    class="ri-file-copy-line"></i></button>
+            <button
+                onclick="copyPredefinedText('PM: Figma Live link view access is not given. Get access before posting to the Client.')">No
+                figma access yet <i class="ri-file-copy-line"></i></button>
+            <button disabled onclick="copyPredefinedText('For Approval- <br> Task- <br> Design-')">Currently Empty
+                <i class="ri-file-copy-line"></i></button>
+            <button disabled onclick="copyPredefinedText('FIGMA LIVE LINK:')">Currently Empty<i
+                    class="ri-file-copy-line"></i></button>
+            <button disabled onclick="copyPredefinedText('FIGMA LIVE LINK:')">Currently Empty<i
+                    class="ri-file-copy-line"></i></button>
+
+            <button disabled onclick="copyPredefinedText('FIGMA LIVE LINK:')">Currently Empty<i
+                    class="ri-file-copy-line"></i></button>
+
+        </div>
+        <div class="container-3">
+            <div class="icon"><a target=”_blank” href="https://kimphub.com/home"><img width="80px" src="/01.png"
+                        alt=""></a></div>
+            <div class="icon"><a target=”_blank” href="https://www.freepik.com/" referrerpolicy="no-referrer"><img
+                        width="80px" src="/02.png" alt=""></a>
+            </div>
+            <div class="icon"><a target=”_blank” href="https://unsplash.com/"><img width="80px" src="/03.png"
+                        alt=""></a></div>
+
+            <div class="icon"><a target=”_blank” href="https://in.pinterest.com/"><img width="80px" src="/04.png"
+                        alt=""></a></div>
+
+            <div class="icon"><a target=”_blank” href="https://phosphoricons.com/?size=24"><img width="80px"
+                        src="/05.png" alt=""></a></div>
+
+            <div class="icon"><a target=”_blank” href="https://dribbble.com/"><img width="80px" src="/06.png"
+                        alt=""></a></div>
+
+            <div class="icon"><a target=”_blank” href="https://httpster.net/"><img width="80px" src="/07.png"
+                        alt=""></a></div>
+
+        </div>
     </div>
+    <div id="toast" class="toast">Copied to clipboard</div>
+
     <div class="footer">
         <h4>By <a target=”_blank” href="https://avishek-dey.github.io/portfolio-2024/">Avishek Dey</a></h4>
     </div>
@@ -127,7 +328,7 @@
             document.getElementById('output').innerText = dynamicText;
 
             copyToClipboard(dynamicText);
-            alert('Text copied to clipboard: ' + dynamicText);
+            showToast('Copied to clipboard ►' + dynamicText);
         }
 
         function copyToClipboard(text) {
@@ -137,6 +338,20 @@
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
+        }
+
+        function copyPredefinedText(predefinedText) {
+            copyToClipboard(predefinedText);
+            showToast('Copied to clipboard 🚀');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.className = 'toast show';
+            setTimeout(() => {
+                toast.className = toast.className.replace('show', '');
+            }, 3000);
         }
     </script>
 </body>
